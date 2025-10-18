@@ -1,0 +1,23 @@
+{
+  "name": "practicecode",
+  "version": "1.0.0",
+  "description": "Initial learning phase projects",
+  "keywords": [
+    "backend",
+    "node"
+  ],
+  "license": "ISC",
+  "author": "Soham Nag",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.19.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
