@@ -1,0 +1,109 @@
+{
+  "info": {
+    "_postman_id": "3629a7cb-8ce3-4710-ad77-96796f4107a6",
+    "name": "Backend-videotube",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Register",
+          "id": "962e7d22-bd4f-4e9f-a9b5-60baddfff9f6",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{Server}}/users/register",
+              "host": [
+                "{{Server}}"
+              ],
+              "path": [
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Post",
+          "id": "dab436bd-a9ec-45d2-80c8-f90a96ee8b29",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "fullName",
+                  "value": "Soham Nag12",
+                  "type": "text",
+                  "uuid": "b404e224-11f2-4304-a6cc-12fd7c037f82"
+                },
+                {
+                  "key": "avatar",
+                  "type": "file",
+                  "uuid": "8d07cfa1-f7c1-49a5-bbd6-a8815256440b",
+                  "src": [
+                    "/D:/Design/Uploads/WhatsApp Image 2025-10-15 at 02.44.48_1a29dc9c.jpg"
+                  ]
+                },
+                {
+                  "key": "password",
+                  "value": "12345656",
+                  "type": "text",
+                  "uuid": "edc88ddf-ecfa-4abf-a6af-e9dec1f76b7a"
+                },
+                {
+                  "key": "username",
+                  "value": "sohamnag1445",
+                  "type": "text",
+                  "uuid": "61f535c7-47b9-4470-b134-21186cb5fb10"
+                },
+                {
+                  "key": "email",
+                  "value": "sohamnag114@gmail.com",
+                  "type": "text",
+                  "uuid": "af2c6cbf-98e2-47d2-93cf-699b6504666e"
+                },
+                {
+                  "key": "coverImage",
+                  "type": "file",
+                  "uuid": "b35e52e4-68a8-441c-a31c-d9f65194faf3",
+                  "src": [
+                    "/D:/WhatsApp Image 2025-10-31 at 23.13.55_696085a2.jpg"
+                  ],
+                  "disabled": true
+                }
+              ],
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3580/api/v1/users/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3580",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "240d952e-45ef-43a3-97ab-d8f66b85d438",
+      "description": "User details APIs for project videotube"
+    }
+  ]
+}
