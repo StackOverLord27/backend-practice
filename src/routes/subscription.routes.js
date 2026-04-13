@@ -1,18 +1,19 @@
 import { Router } from 'express';
 import {
-    getLikedVideos,
-    toggleCommentLike,
-    toggleVideoLike,
-    toggleTweetLike,
-} from "../controllers/like.controller.js"
+    toggleSubscription,
+    getUserChannelSubscribers,
+    getSubscribedChannels,
+    getChannelSubscriberCount,
+    isUserSubscribed
+} from "../controllers/subscription.controller.js"
 import {verifyJWT} from "../middlewares/auth.middleware.js"
 
 const router = Router();
 router.use(verifyJWT); // Apply verifyJWT middleware to all routes in this file
 
-router.route("/toggle/v/:videoId").post(toggleVideoLike);
-router.route("/toggle/c/:commentId").post(toggleCommentLike);
-router.route("/toggle/t/:tweetId").post(toggleTweetLike);
-router.route("/videos").get(getLikedVideos);
+router.route("/c/:channelId").post(toggleSubscription).get(getUserChannelSubscribers);
+router.route("/u").get(getSubscribedChannels);
+router.route("/count/:channelId").get(getChannelSubscriberCount);
+router.route("/status/:channelId").get(isUserSubscribed);
 
 export default router

@@ -163,7 +163,7 @@ const refreshAccessToken= asyncHandler(async (req, res)=> {
    try {
       const decodedToken= jwt.verify(incomingRefreshToken, process.env.RFRESH_TOKEN_SECRET)
 
-      const user= await user.findById(decodedToken?._id)
+      const user = await User.findById(decodedToken?._id)
 
       if(!user){
          throw new ApiError(401, "Invalid refresh token")
@@ -180,7 +180,7 @@ const refreshAccessToken= asyncHandler(async (req, res)=> {
 
       const {accessToken, newRefreshToken}= generateAccessAndRefreshToken(user)
 
-      return res.status(200),cookie("accessToken", options).cookie("newRefreshToken", options).json(
+      return res.status(200).cookie("accessToken", options).cookie("newRefreshToken", options).json(
          new ApiResponse(
             200, {
                accessToken, refreshToken: newRefreshToken
@@ -292,7 +292,7 @@ const getUserChannel= asyncHandler(async(req, res)=> {
    
    const {username}= req.params;
 
-   if(!username?.trim){
+   if(!username?.trim()){
       throw new ApiError(400, "Username not found")
    }
 
@@ -342,7 +342,7 @@ const getUserChannel= asyncHandler(async(req, res)=> {
                fullName: 1,
                username: 1,
                subscribersCount: 1,
-               channelaSubscribedToCount:1,
+               channelSubscribedToCount:1,
                isSubscribed:1,
                avatar: 1,
                coverImage: 1,
@@ -376,7 +376,7 @@ const getWatchHistory= asyncHandler(async(req, res)=> {
                {
                   $lookup: {
                      from: "users",
-                     lacalField: "owner",
+                     localField: "owner",
                      foreignField: "_id",
                      as: "owner",
                      pipeline: [

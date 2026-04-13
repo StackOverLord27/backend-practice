@@ -153,7 +153,7 @@ const updateVideoDetails= asyncHandler(async(req, res)=> {
         const thumbnail= await uploadFiles(thumbnailLocalPath)
 
         if(!thumbnail.url){
-            throw new ApiError(500, "Error while uploading thumbnai")
+            throw new ApiError(500, "Error while uploading thumbnail")
         }
         updateData.thumbnail= thumbnail.url
     }

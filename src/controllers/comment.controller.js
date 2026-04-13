@@ -1,9 +1,9 @@
 import mongoose, {isValidObjectId} from "mongoose";
-import { asyncHandler } from "../utils/asyncHandler";
-import { ApiError } from "../utils/apiErrorHandler";
-import { Comment } from "../models/comment.model";
-import { Video } from "../models/video.model";
-import { ApiResponse } from "../utils/apiResponseHandler";
+import { asyncHandler } from "../utils/asyncHandler.js";
+import { ApiError } from "../utils/apiErrorHandler.js";
+import { Comment } from "../models/comment.model.js";
+import { Video } from "../models/video.model.js";
+import { ApiResponse } from "../utils/apiResponseHandler.js";
 
 
 
@@ -20,7 +20,7 @@ const getVideoComments= asyncHandler(async(req, res)=> {
         throw new ApiError(404, "Video not found")
     }
 
-    const comments= await Comment.aggregate([
+    const comments= Comment.aggregate([
         {
             $match: {
                 video: new mongoose.Types.ObjectId(videoId)
@@ -29,14 +29,14 @@ const getVideoComments= asyncHandler(async(req, res)=> {
         {$sort: {createdAt: -1}},
         {
             $lookup: {
-                from: "user",
+                from: "users",
                 localField: "owner",
                 foreignField: "_id",
                 as: "ownerDetails"
             }
         },
         {
-            $unwind: "ownerDetails"
+            $unwind: "$ownerDetails"
         }
     ]) 
 
